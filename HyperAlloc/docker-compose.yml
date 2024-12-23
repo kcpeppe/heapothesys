@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  java-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./output:/app/output  # Bind mount for output (ensure you have this directory on the host)
+    tty: true            # Keep the terminal open if necessary
+    command: ["-a","8192","-h","4","-d","30","-c","false","-l","output/output.csv","-b","output/allocations.txt"]
+    #command: ["--your-parameter", "value"]  
